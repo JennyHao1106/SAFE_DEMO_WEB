@@ -60,11 +60,9 @@
           <el-table-column prop="person_name" label="人员姓名" width="180" />
           <el-table-column prop="picture_url" label="图片链接">
             <template #default="scope">
-              <el-button
-                type="text"
-                @click="openProdSafeDetail(scope.row)"
-                >{{ scope.row.picture_url }}</el-button
-              >
+              <el-button type="text" @click="openProdSafeDetail(scope.row)">{{
+                scope.row.picture_url
+              }}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -105,10 +103,15 @@ import baseFun from "../../common/untils/baseFunction";
 // import { toRaw } from '@vue/reactivity'
 export default {
   setup() {
-    const baseImg = "http://localhost:3000/";
+    let baseImg = "";
+    if (process.env.NODE_ENV == "development") {
+      baseImg = "http://localhost:8081";
+    } else {
+      baseImg = "http://api.safe.demo:3000";
+    }
     let prodSafeDetailFlag = ref(false);
     const timer = setInterval(() => {
-      api.queryProdData(3);
+      api.queryProdData();
     }, 1000);
     let clickItem = ref({});
     return {
@@ -121,12 +124,12 @@ export default {
   },
   methods: {
     openProdSafeDetail(data) {
-      this.prodSafeDetailFlag = !this.prodSafeDetailFlag
+      this.prodSafeDetailFlag = !this.prodSafeDetailFlag;
       this.clickItem = data;
     },
   },
   mounted() {
-    api.queryProdData(3);
+    api.queryProdData();
   },
   unmounted() {
     clearInterval(this.timer);
@@ -151,7 +154,7 @@ export default {
     getPicURL() {
       return this.$store.state.prodData.total > 0
         ? this.baseImg + this.$store.state.prodData.list[0].picture_url
-        : "http://localhost:3000/404.gif";
+        : this.baseImg+"/404.gif";
     },
   },
 };

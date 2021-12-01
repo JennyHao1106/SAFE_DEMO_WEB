@@ -96,10 +96,15 @@ import api from "../../common/untils/api";
 import baseFun from "../../common/untils/baseFunction";
 export default {
   setup() {
-    const baseImg = "http://localhost:3000/";
+   let baseImg = "";
+    if (process.env.NODE_ENV == "development") {
+      baseImg = "http://localhost:8081";
+    } else {
+      baseImg = "http://api.safe.demo:3000";
+    }
     let faceSafeDetailFlag = ref(false);
     const timer1 = setInterval(() => {
-      api.queryProdData(1);
+      api.queryFaceData();
     }, 1000);
     let clickItem = ref({});
     return {
@@ -117,7 +122,7 @@ export default {
     },
   },
   mounted() {
-    api.queryProdData(1);
+    api.queryFaceData();
   },
   unmounted() {
     clearInterval(this.timer1);
@@ -142,7 +147,7 @@ export default {
     getPicURL() {
       return this.$store.state.faceData.total > 0
         ? this.baseImg + this.$store.state.faceData.list[0].picture_url
-        : "http://localhost:3000/404.gif";
+        : this.baseImg+"/404.gif";
     },
   },
 };
