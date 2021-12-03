@@ -71,18 +71,7 @@ const routes = [
       title: "大屏展示",
     },
     component: () =>
-      import(/* webpackChunkName: "show" */ "../pages/show/Show"),
-    children: [
-      {
-        path: "/prodshow",
-        name: "prodshow",
-        meta: {
-          title: "安全大屏展示",
-        },
-        component: () =>
-          import(/* webpackChunkName: "prodshow" */ "../pages/show/Prodshow"),
-      },
-    ],
+      import(/* webpackChunkName: "show" */ "../pages/show/Show")
   },
 ];
 
