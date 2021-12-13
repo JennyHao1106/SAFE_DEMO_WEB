@@ -98,16 +98,17 @@ export default {
 
 <style lang="less">
 .top-right-cmp {
-  position: relative;
-  padding: 0 50px;
+  //padding: 0 30px;
   box-sizing: border-box;
-
+  width: 50%;
   .chart-name {
-    position: absolute;
-    right: 70px;
+     position: absolute;
+     right: 70px;
     text-align: right;
-    font-size: 20px;
+    font-size: 16px;
     top: 10px;
+   // display: flex;
+    
   }
 }
 </style>

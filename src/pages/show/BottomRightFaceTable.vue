@@ -27,8 +27,9 @@ export default {
           ['李雷', '月累计排除故障：2起'],
           ['韩梅梅', '月累计排除故障：2起']
         ],
+        rowNum:8,
         index: true,
-        columnWidth: [30, 70],
+        columnWidth: [30, 70,70],
         align: ['center'],
         oddRowBGC: 'rgba(9, 37, 50, 0.4)',
         evenRowBGC: 'rgba(10, 32, 50, 0.3)'
@@ -47,6 +48,8 @@ export default {
   .border-box-content {
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 
   .table-name {

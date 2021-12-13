@@ -105,9 +105,9 @@ export default {
   setup() {
     let baseImg = "";
     if (process.env.NODE_ENV == "development") {
-      baseImg = "http://localhost:8081";
+      baseImg = "http://localhost:8081/";
     } else {
-      baseImg = "http://api.safe.demo:3000";
+      baseImg = "http://api.safe.demo:3000/";
     }
     let prodSafeDetailFlag = ref(false);
     const timer = setInterval(() => {

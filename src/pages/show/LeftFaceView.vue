@@ -1,36 +1,33 @@
 <template>
   <div class="top-left-cmp">
-    <div class="dc-left">
-      <dv-border-box-5>
-        <div class="main-value"><span>5000</span>人次</div>
-        <div class="compare-value"><span>统计时间</span></div>
-        <div class="compare-value">
-          <span>{{ nowTime }}</span>
-        </div>
-      </dv-border-box-5>
+    <div class="dc-left-top">
       <div class="dc-text">
         登记信息总览
         <dv-decoration-3 style="width: 200px; height: 20px" />
       </div>
-    </div>
-    <div class="dc-right">
-      <div class="dc-text">
-        作业预警信息总览
-        <dv-decoration-3 style="width: 200px; height: 20px" />
+      <div class="main-value">
+        <span>{{getTableTotal}}</span>人次
+        <div class="compare-value">统计时间{{ nowTime }}</div>
       </div>
-      <dv-border-box-5 :reverse="true">
-        <div class="main-value"><span>5000</span>人次</div>
-        <div class="compare-value"><span>统计时间</span></div>
-        <div class="compare-value"><span>{{ nowTime }}</span></div>
-      </dv-border-box-5>
+      <div>
+        <dv-border-box-8>
+          <div class="el-image">
+            <img :src="imgSrc" alt="" srcset="" />
+          </div>
+        </dv-border-box-8>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
+
 export default {
   name: "TopLeftCmp",
+  props:{
+    baseImg:String
+  },
   setup() {
     return {
       timer: ref(""),
@@ -38,10 +35,18 @@ export default {
     };
   },
   mounted() {
-   this.timer = setInterval(this.getTime, 1000);
+    this.timer = setInterval(this.getTime, 1000);
   },
-  beforeRouteLeave(){
-    clearInterval(this.timer)
+  unmounted() {
+    clearInterval(this.timer);
+  },
+  computed:{
+    getTableTotal() {
+      return this.$store.state.faceData.total;
+    },
+    imgSrc(){
+      return this.baseImg +this.$store.state.faceData.list[0].picture_url;
+    }
   },
   methods: {
     checkTime(i) {
@@ -77,54 +82,59 @@ export default {
 <style lang="less">
 .top-left-cmp {
   display: flex;
+  flex-direction: column;
 
-  .dc-left,
-  .dc-right {
-    width: 50%;
+  .dc-left-top {
+    height: 50%;
+    box-sizing: border-box;
   }
-
-  .dv-border-box-5 {
-    height: 60%;
+  .dv-decoration-2 {
+    width: 100%;
+    height: 5px;
   }
-
   .dc-text {
     display: flex;
     flex-direction: column;
     height: 40%;
-    font-size: 20px;
-    padding: 20px;
+    font-size: 16px;
+    text-align: left;
     box-sizing: border-box;
   }
 
-  .dc-left .dc-text {
-    align-items: flex-end;
+  .dc-left-top .dc-text {
+    align-items: center;
     justify-content: center;
   }
 
-  .dc-right .dc-text {
-    justify-content: flex-start;
-    padding-top: 20px;
-  }
+  // .dc-right .dc-text {
+  //   justify-content: flex-start;
+  //   padding-top: 20px;
+  // }
 
-  .dc-left .dv-border-box-5 {
+  .dc-left-top .dv-border-box-5 {
     padding: 30px;
-    box-sizing: border-box;
-  }
-
-  .dc-right .dv-border-box-5 {
-    padding: 35px;
-    padding-left: 75px;
     box-sizing: border-box;
   }
 
   .main-value {
     font-weight: bold;
     font-size: 30px;
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     span {
       font-size: 50px;
       color: #00c0ff;
       margin-right: 15px;
+    }
+    .compare-value {
+      height: 35px;
+      line-height: 35px;
+      font-size: 18px;
+      margin-left: 20px;
+      span {
+        margin-right: 30px;
+      }
     }
   }
 
@@ -132,9 +142,15 @@ export default {
     height: 35px;
     line-height: 35px;
     font-size: 18px;
-
     span {
       margin-right: 30px;
+    }
+  }
+   .dv-border-box-8 .border-box-content {
+    height: 350px;
+    .el-image {
+      margin: 10px;
+      border-radius: 5px;
     }
   }
 }

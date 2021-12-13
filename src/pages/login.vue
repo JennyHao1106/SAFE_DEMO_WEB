@@ -115,7 +115,7 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgb(32, 160, 255);
+  background-image: url("~@/assets/background.jpg");
 }
 .middle-wrapper {
   position: fixed;
