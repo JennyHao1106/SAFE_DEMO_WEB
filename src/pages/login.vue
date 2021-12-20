@@ -8,22 +8,12 @@
         <el-form ref="loginForm" :model="form" :rules="rules">
           <el-form-item prop="username">
             <el-input v-model="form.username" placeholder="请输入账号">
-              <i
-                class="el-input__icon el-icon-adm-user"
-                style="font-size: 18px"
-              ></i>
+              <i class="el-input__icon el-icon-adm-user" style="font-size: 18px"></i>
             </el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input
-              :type="passwordType"
-              v-model="form.password"
-              placeholder="请输入密码"
-            >
-              <i
-                class="el-input__icon el-icon-adm-password"
-                style="font-size: 18px"
-              ></i>
+            <el-input :type="passwordType" v-model="form.password" placeholder="请输入密码">
+              <i class="el-input__icon el-icon-adm-password" style="font-size: 18px"></i>
               <i
                 class="el-input__icon el-icon-view"
                 style="cursor: pointer"
@@ -39,9 +29,7 @@
                   class="login-btn"
                   style="width: 100%"
                   @click="loginHandle('loginForm')"
-                >
-                  登陆系统
-                </el-button>
+                >登陆系统</el-button>
               </el-form-item>
             </el-col>
           </el-form-item>
@@ -54,9 +42,9 @@
 // import validateCode from '@/components/ValidateCode/index'
 
 export default {
-  created() {},
+  created() { },
   data() {
-      return {
+    return {
       passwordType: "password",
       checkCode: "",
       form: {
@@ -92,17 +80,17 @@ export default {
       });
     },
     login() {
-      /*
-       *  在这边可以进行登陆请求
-       *  将请求返回的Token对象存到store中
-       *  @Token  token对象
-       */
+     
+      if (this.form.username == 'admin' && this.form.password== 'admin') {
+        let token = "a94756da-2962-40ae-bdea-787fd02c9d92";
+        this.$store.commit("SET_TOKEN", token);
+        this.$router.replace("camera");
+      } else {
+        this.$message.error("请输入正确的用户名密码");
 
-      let token = "a94756da-2962-40ae-bdea-787fd02c9d92";
-      this.$store.commit("SET_TOKEN", token);
-      this.$router.replace("camera");
-    },
-  }, // ,
+      }
+  },
+}, // ,
   //   components: {
   //     validateCode
   //   }

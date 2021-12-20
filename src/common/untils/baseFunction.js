@@ -30,7 +30,7 @@ function changeCheckState(checkState) {
 function changeTimeToDate(timestap) {
   let time = new Date(parseInt(timestap));
   let year = time.getFullYear();
-  let month = time.getMonth();
+  let month = time.getMonth()+1;
   let day = time.getDate();
   let hour = time.getHours();
   let min = time.getMinutes();

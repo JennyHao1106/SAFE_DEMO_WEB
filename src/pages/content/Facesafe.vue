@@ -24,7 +24,7 @@
             <el-descriptions-item label="时间">{{
               baseFun.changeTimeToDate(getCheckTime)
             }}</el-descriptions-item>
-            <el-descriptions-item label="状态">正常</el-descriptions-item>
+            <el-descriptions-item label="状态"><span class="normal-style">正常</span></el-descriptions-item>
           </el-descriptions>
         </el-col>
       </el-row>
@@ -159,5 +159,14 @@ export default {
 }
 .fit-style {
   max-height: 350px;
+}
+.normal-style{
+  color: #0ac50a;
+  font-weight: 700;
+  font-size: 24px;
+}
+.el-table__body tr{
+  height: 10px;
+  line-height: 10px;
 }
 </style>

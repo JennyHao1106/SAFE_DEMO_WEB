@@ -91,7 +91,10 @@ export default {
       this.enterMsg = "";
     },
     createFaceInfo() {
-      api
+      if(this.inputName == ''){
+          this.$message.error("用户名不能为空")
+      }else{
+        api
         .createFaceInfo(this.inputName)
         .then((res) => {
           this.$message.success(res.data.msg);
@@ -103,6 +106,9 @@ export default {
         .catch((err) => {
           this.$message.success(err.data.msg);
         });
+
+      }
+    
     },
     enterFaceInfo() {
       api

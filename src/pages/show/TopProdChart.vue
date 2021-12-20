@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import showData from "@/common/untils/show";
 export default {
   name: "TopRightCmp",
   data() {
@@ -26,24 +27,7 @@ export default {
           },
         },
         xAxis: {
-          data: [
-            "7时",
-            "8时",
-            "9时",
-            "10时",
-            "11时",
-            "12时",
-            "13时",
-            "14时",
-            "15时",
-            "16时",
-            "17时",
-            "18时",
-            "19时",
-            "20时",
-            "21时",
-            "22时",
-          ],
+          data: [],
           axisLine: {
             style: {
               stroke: "#999",
@@ -77,13 +61,13 @@ export default {
             show: false,
           },
           min: 0,
-          max: 500,
-          interval: 50,
+          max: 50,
+          interval: 5,
         },
         series: [
           {
             name: "人次/时",
-            data: [100, 200, 300, 405, 300, 200, 150, 205, 99.84],
+            data: [],
             type: "bar",
             gradient: {
               color: ["#37a2da", "#67e0e3"],
@@ -93,6 +77,18 @@ export default {
       },
     };
   },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    init() {
+      /**绘图X\Y轴必须有数据，为了确保折线图展示无误，通过该方法初始化数据 */
+      let initXaxis = ["7时", "8时", "9时", "10时", "11时", "12时", "13时", "14时", "15时", "16时", "17时", "18时"];
+      let initYaxis = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      this.option.xAxis.data = showData.getProdDataForShowChart().timeData.length == 0 ? initXaxis : showData.getProdDataForShowChart().timeData;
+      this.option.series[0].data = showData.getProdDataForShowChart().countData.length == 0 ? initYaxis : showData.getProdDataForShowChart().countData;
+    }
+  }
 };
 </script>
 

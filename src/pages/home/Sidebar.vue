@@ -32,7 +32,7 @@ export default {
       {
         icon: "el-icon-lx-cascades",
         index: "/prodsafe",
-        title: "生产安全监控",
+        title: "作业安全监控",
       },
       {
         icon: "el-icon-lx-cascades",

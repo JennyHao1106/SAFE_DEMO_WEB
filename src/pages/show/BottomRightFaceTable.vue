@@ -10,30 +10,33 @@
 </template>
 
 <script>
+import showData from "@/common/untils/show";
+
 export default {
   name: 'BottomRightTable1',
-  data () {
+  data() {
     return {
       config: {
         data: [
-          ['张三', '月累计排除故障：4起'],
-          ['李四', '月累计排除故障：3起'],
-          ['王五', '月累计排除故障：3起'],
-          ['赵六', '月累计排除故障：3起'],
-          ['钱七', '月累计排除故障：2起'],
-          ['孙八', '月累计排除故障：2起'],
-          ['杨九', '月累计排除故障：2起'],
-          ['吴十', '月累计排除故障：2起'],
-          ['李雷', '月累计排除故障：2起'],
-          ['韩梅梅', '月累计排除故障：2起']
         ],
-        rowNum:8,
+        rowNum: 8,
         index: true,
-        columnWidth: [30, 70,70],
+        columnWidth: [30, 70, 70],
         align: ['center'],
         oddRowBGC: 'rgba(9, 37, 50, 0.4)',
         evenRowBGC: 'rgba(10, 32, 50, 0.3)'
       }
+    }
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    showDetail() {
+
+    },
+    init() {
+      this.config.data = showData.getFaceDataForShowList()
     }
   }
 }
