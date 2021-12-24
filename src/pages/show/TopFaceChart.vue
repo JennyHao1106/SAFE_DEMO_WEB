@@ -53,16 +53,12 @@ export default {
           axisLabel: {
             style: {
               fill: "#999",
-            },
-            formatter({ value }) {
-              return value.toFixed(2);
-            },
+            }
           },
           axisTick: {
             show: false,
           },
           min: 0,
-          max: 400,
           interval: 50,
         },
         series: [

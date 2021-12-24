@@ -60,8 +60,7 @@ export default {
           axisTick: {
             show: false,
           },
-          min: 0,
-          max: 400,
+          min: 0,  
           interval:50,
         },
         series: [
