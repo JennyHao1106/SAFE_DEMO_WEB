@@ -149,7 +149,7 @@ export default {
   .dv-border-box-8 .border-box-content {
     height: calc(33vh);
     .el-image {
-      margin: 10px auto;
+      margin: 10px;
       border-radius: 5px;
     }
   }

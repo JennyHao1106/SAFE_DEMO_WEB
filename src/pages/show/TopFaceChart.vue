@@ -62,8 +62,8 @@ export default {
             show: false,
           },
           min: 0,
-          max: 50,
-          interval: 5,
+          max: 400,
+          interval: 50,
         },
         series: [
           {

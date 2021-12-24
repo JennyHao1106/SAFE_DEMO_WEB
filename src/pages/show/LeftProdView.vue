@@ -112,7 +112,7 @@ export default {
     // height: 350px;
     height: calc(33vh);
     .el-image {
-      margin: 10px auto;
+      margin: 10px;
       border-radius: 5px;
     }
   }
