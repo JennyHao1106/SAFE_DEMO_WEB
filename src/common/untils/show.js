@@ -13,7 +13,7 @@ function getProdDataForShowList() {
         newItem.push(item.person_name)
         newItem.push(baseFun.changeAlarmState(item.alarm_state))
         newItem.push(baseFun.changeTimeToDate(item.alarm_time))
-        newItem.push("查看详情")
+        newItem.push("<span  value=("+item.picture_url+") >查看详情</input>")
         return newItem;
     })
     return showList;
@@ -29,7 +29,7 @@ function getFaceDataForShowList() {
         newItem.push(item.person_name)
         newItem.push(baseFun.changeCheckState(item.check_state))
         newItem.push(baseFun.changeTimeToDate(item.check_time))
-        newItem.push("查看详情")
+        newItem.push("<span  value=("+item.picture_url+") >查看详情</input>")
         return newItem;
     })
     return showList;

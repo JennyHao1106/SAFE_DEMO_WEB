@@ -4,7 +4,7 @@
       登记人次统计分析
       <dv-decoration-3 style="width: 200px; height: 20px" />
     </div>
-    <dv-charts :option="option" />
+    <dv-charts :option="option"/>
   </div>
 </template>
 
@@ -94,7 +94,6 @@ export default {
       /**绘图X\Y轴必须有数据，为了确保折线图展示无误，通过该方法初始化数据 */
       let initXaxis = ["7时", "8时", "9时", "10时", "11时", "12时", "13时", "14时", "15时", "16时", "17时", "18时"];
       let initYaxis = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-     
       this.option.xAxis.data = showData.getFaceDataForShowChart().timeData.length == 0 ? initXaxis : showData.getFaceDataForShowChart().timeData;
       this.option.series[0].data = showData.getFaceDataForShowChart().countData.length == 0 ? initYaxis : showData.getFaceDataForShowChart().countData;
     }

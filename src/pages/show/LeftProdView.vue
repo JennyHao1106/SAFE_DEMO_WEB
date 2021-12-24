@@ -5,13 +5,13 @@
       <dv-decoration-3 style="width: 200px; height: 20px" />
     </div>
     <div class="main-value">
-      <span>5000</span>人次
+      <span>{{ getTableTotal }}</span>人次
       <div class="compare-value">统计时间：{{ nowTime }}</div>
     </div>
     <div>
       <dv-border-box-8>
         <div class="el-image">
-          <img src="~@/assets/model.png" alt="" srcset="">
+          <img :src="imgSrc" alt srcset class="el-image__inner" style="object-fit: fill;" />
         </div>
       </dv-border-box-8>
     </div>
@@ -22,11 +22,13 @@
 import { ref } from "@vue/reactivity";
 export default {
   name: "BottomLeftChart1",
+  props: {
+    baseImg: String
+  },
   setup() {
     return {
       timer: ref(""),
       nowTime: ref(""),
-     
     };
   },
   mounted() {
@@ -34,6 +36,14 @@ export default {
   },
   beforeRouteLeave() {
     clearInterval(this.timer);
+  },
+  computed: {
+    getTableTotal() {
+      return this.$store.state.prodData.total;
+    },
+    imgSrc() {
+      return this.baseImg + this.$store.state.prodData.list[0].picture_url;
+    }
   },
   methods: {
     checkTime(i) {
@@ -99,9 +109,10 @@ export default {
     }
   }
   .dv-border-box-8 .border-box-content {
-    height: 350px;
+    // height: 350px;
+    height: calc(33vh);
     .el-image {
-      margin: 10px;
+      margin: 10px auto;
       border-radius: 5px;
     }
   }

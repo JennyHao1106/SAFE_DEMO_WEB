@@ -5,9 +5,7 @@
         <div class="mh-left">检测事件：安全帽检测-安全带检测-人脸识别</div>
         <div class="mh-middle">生产安全监控智能分析系统</div>
         <div class="mh-right">
-          <dv-border-box-2 class="jump-to-manager" @click="toManager">
-            管理系统
-          </dv-border-box-2>
+          <dv-border-box-2 class="jump-to-manager" @click="toManager">管理系统</dv-border-box-2>
         </div>
       </div>
       <dv-loading v-if="isLoad">Loading...</dv-loading>
@@ -66,23 +64,30 @@ export default {
     } else {
       baseImg = "http://api.safe.demo:3000/";
     }
+
     return {
       isLoad: ref(true),
       baseImg,
+      timerForShow: ref("")
     };
   },
   mounted() {
     this.init();
+    setTimeout(() => {
+      this.isLoad = false;
+    }, 2000);
+  },
+  unmounted() {
+    clearInterval(this.timerForShow);
   },
   methods: {
     //初始化数据
     init() {
       //获取登机信息的数据
-      api.queryFaceData();
-      api.queryProdData();
-      setTimeout(() => {
-        this.isLoad = false;
-      }, 2000);
+      this.timerForShow = setInterval(() => {
+        api.queryFaceData();
+        api.queryProdData();
+      }, 1000)
     },
     toManager() {
       this.$router.replace("/");
