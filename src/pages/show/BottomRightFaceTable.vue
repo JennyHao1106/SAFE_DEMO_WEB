@@ -37,7 +37,7 @@ export default {
         ],
         rowNum: 8,
         index: true,
-        columnWidth: [30, 70, 70],
+        columnWidth: [40, 70, 90, 150],
         align: ['center'],
         oddRowBGC: 'rgba(9, 37, 50, 0.4)',
         evenRowBGC: 'rgba(10, 32, 50, 0.3)'

@@ -13,7 +13,7 @@
       <dv-border-box-1 class="main-container" v-else>
         <div class="mc-left">
           <div class="mc-left-top">
-            <Left-Face-View :baseImg="baseImg" />
+            <Left-Face-View :baseImg="baseImg"  />
           </div>
           <dv-decoration-2 />
           <div class="mc-left-bottom">
@@ -22,13 +22,13 @@
         </div>
         <div class="mc-right">
           <div class="mc-right-top">
-            <Top-Face-Chart />
-            <Top-Prod-Chart />
+            <Top-Face-Chart ref="faceChart" />
+            <Top-Prod-Chart ref="prodChart" />
           </div>
           <dv-decoration-2 :reverse="true" />
           <div class="mc-right-bottom">
-            <Bottom-Right-Face-Table />
-            <Bottom-Right-Prod-Table />
+            <Bottom-Right-Face-Table ref="faceTable" />
+            <Bottom-Right-Prod-Table ref="prodTable" />
           </div>
         </div>
       </dv-border-box-1>
@@ -87,6 +87,13 @@ export default {
       this.timerForShow = setInterval(() => {
         api.queryFaceData();
         api.queryProdData();
+        // this.$refs.faceView.init();
+        // this.$refs.prodView.init();
+        this.$refs.faceChart.init();
+        this.$refs.prodChart.init();
+        this.$refs.faceTable.init();
+        this.$refs.prodTable.init();
+
       }, 1000)
     },
     toManager() {

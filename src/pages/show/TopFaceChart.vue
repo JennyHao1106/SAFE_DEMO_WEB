@@ -4,7 +4,7 @@
       登记人次统计分析
       <dv-decoration-3 style="width: 200px; height: 20px" />
     </div>
-    <dv-charts :option="option"/>
+    <dv-charts :option="option" />
   </div>
 </template>
 
@@ -25,7 +25,6 @@ export default {
         },
         xAxis: {
           data: [],
-          boundaryGap: false,
           axisLine: {
             style: {
               stroke: "#999",
@@ -64,19 +63,15 @@ export default {
         series: [
           {
             data: [],
-            type: "line",
+            type: "bar",
             name: "人次/时",
             smooth: true,
-            lineArea: {
-              show: true,
-              gradient: ["rgba(55, 162, 218, 0.6)", "rgba(55, 162, 218, 0)"],
+            gradient: {
+              color: ['rgba(251, 114, 147, .6)', 'rgba(251, 114, 147, .1)']
             },
-            linePoint: {
-              radius: 4,
-              style: {
-                fill: "#00db95",
-              },
-            },
+            barStyle: {
+              stroke: '#fb7293'
+            }
           },
         ],
       }),
