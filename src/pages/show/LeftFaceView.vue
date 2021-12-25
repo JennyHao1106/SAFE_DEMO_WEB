@@ -96,7 +96,9 @@ export default {
     display: flex;
     flex-direction: column;
     height: 40%;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 900;
+    color:#00c0ff;
     text-align: left;
     box-sizing: border-box;
   }
@@ -147,7 +149,7 @@ export default {
     }
   }
   .dv-border-box-8 .border-box-content {
-    height: calc(33vh);
+    height: calc(32vh);
     .el-image {
       margin: 10px;
       border-radius: 5px;

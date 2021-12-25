@@ -65,13 +65,9 @@ export default {
             data: [],
             type: "bar",
             name: "人次/时",
-            smooth: true,
             gradient: {
-              color: ['rgba(251, 114, 147, .6)', 'rgba(251, 114, 147, .1)']
+              color: ["#37a2da", "#67e0e3"],
             },
-            barStyle: {
-              stroke: '#fb7293'
-            }
           },
         ],
       }),

@@ -69,8 +69,12 @@ export default {
             data: [],
             type: "bar",
             gradient: {
-              color: ["#37a2da", "#67e0e3"],
+              color: ['rgba(251, 114, 147, .6)', 'rgba(251, 114, 147, .1)']
             },
+            barStyle: {
+              stroke: '#fb7293'
+            }
+            
           },
         ],
       },

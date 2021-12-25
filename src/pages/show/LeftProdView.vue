@@ -85,6 +85,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 18px;
+    font-weight: 900;
+    color:#c85c7e;
   }
 
   .main-value {
@@ -95,7 +98,7 @@ export default {
     align-items: center;
     span {
       font-size: 50px;
-      color: #00c0ff;
+      color: #c85c7e;
       margin-right: 15px;
     }
     .compare-value {
@@ -110,7 +113,7 @@ export default {
   }
   .dv-border-box-8 .border-box-content {
     // height: 350px;
-    height: calc(33vh);
+    height: calc(32vh);
     .el-image {
       margin: 10px;
       border-radius: 5px;
