@@ -53,12 +53,20 @@ export default {
   },
   methods: {
     init() {
-      this.config.data = showData.getProdDataForShowList()
+      let showDataArr = showData.getProdDataForShowList()
+      this.config = {
+        data: showDataArr, index: true,
+        rowNum: 8,
+        columnWidth: [40, 70, 90, 150],
+        align: ['center'],
+        oddRowBGC: 'rgba(9, 37, 50, 0.4)',
+        evenRowBGC: 'rgba(10, 32, 50, 0.3)'
+      }
     },
     openImg(data) {
       console.log(data)
       if (data.columnIndex == 4) {
-        let reg =/\((.+?)\)/g;
+        let reg = /\((.+?)\)/g;
         data.ceil.match(reg);
         this.prodSafeDetailFlag = true;
         this.imgUrl = RegExp.$1;

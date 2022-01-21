@@ -4,9 +4,9 @@
       <div class="table-name">
         <img src="~@/assets/icon2.png" />登机人次历史记录
       </div>
-      <dv-scroll-board :config="config" @click="openImg"/>
+      <dv-scroll-board :config="config" @click="openImg" />
     </dv-border-box-6>
-        <el-dialog v-model="faceSafeDetailFlag" title="告警图像" width="40%" :append-to-body="true">
+    <el-dialog v-model="faceSafeDetailFlag" title="告警图像" width="40%" :append-to-body="true">
       <el-image :src="baseImg + imgUrl" fit="scale-down" class="fit-style">
         <template #placeholder>
           <div class="image-slot">
@@ -25,7 +25,7 @@ import showData from "@/common/untils/show";
 export default {
   name: 'BottomRightTable1',
   data() {
-     let baseImg = "";
+    let baseImg = "";
     if (process.env.NODE_ENV == "development") {
       baseImg = "http://localhost:8081/";
     } else {
@@ -42,7 +42,7 @@ export default {
         oddRowBGC: 'rgba(9, 37, 50, 0.4)',
         evenRowBGC: 'rgba(10, 32, 50, 0.3)'
       },
-      faceSafeDetailFlag:false,
+      faceSafeDetailFlag: false,
       imgUrl: "",
       baseImg
     }
@@ -51,19 +51,28 @@ export default {
     this.init()
   },
   methods: {
-     openImg(data) {
+    openImg(data) {
       if (data.columnIndex == 4) {
-        let reg =/\((.+?)\)/g;
+        let reg = /\((.+?)\)/g;
         data.ceil.match(reg);
         this.faceSafeDetailFlag = true;
         this.imgUrl = RegExp.$1;
       } else {
         return false
       }
-
     },
     init() {
-      this.config.data = showData.getFaceDataForShowList()
+      let showDataArr = showData.getFaceDataForShowList()
+      this.config = {
+        data: showDataArr,
+        rowNum: 8,
+        index: true,
+        columnWidth: [40, 70, 90, 150],
+        align: ['center'],
+        oddRowBGC: 'rgba(9, 37, 50, 0.4)',
+        evenRowBGC: 'rgba(10, 32, 50, 0.3)'
+      }
+
     }
   }
 }

@@ -93,7 +93,6 @@ export default {
         this.$refs.prodChart.init();
         this.$refs.faceTable.init();
         this.$refs.prodTable.init();
-
       }, 1000)
     },
     toManager() {
