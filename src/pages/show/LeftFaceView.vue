@@ -12,7 +12,7 @@
       <div>
         <dv-border-box-8>
           <div class="el-image">
-            <img :src="imgSrc" alt srcset class="el-image__inner" style="object-fit: fill;" />
+            <!-- <img :src="imgSrc" alt srcset class="el-image__inner" style="object-fit: fill;" /> -->
           </div>
         </dv-border-box-8>
       </div>
@@ -43,9 +43,6 @@ export default {
   computed: {
     getTableTotal() {
       return this.$store.state.faceData.total;
-    },
-    imgSrc() {
-      return this.baseImg + this.$store.state.faceData.list[0].picture_url;
     }
   },
   methods: {

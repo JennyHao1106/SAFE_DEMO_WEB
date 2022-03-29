@@ -2,7 +2,7 @@
   <div id="data-view">
     <dv-full-screen-container>
       <div class="main-header">
-        <div class="mh-left">检测事件：安全帽检测-安全带检测-人脸识别</div>
+        <div class="mh-left">检测事件：安全帽-安全带-接打电话</div>
         <div class="mh-middle">生产安全监控智能分析系统</div>
         <div class="mh-right">
           <dv-border-box-2 class="jump-to-manager" @click="toManager">管理系统</dv-border-box-2>
@@ -13,11 +13,11 @@
       <dv-border-box-1 class="main-container" v-else>
         <div class="mc-left">
           <div class="mc-left-top">
-            <Left-Face-View :baseImg="baseImg"  />
+            <Left-Prod-View :baseImg="baseImg" />
           </div>
           <dv-decoration-2 />
           <div class="mc-left-bottom">
-            <Left-Prod-View :baseImg="baseImg" />
+            <Left-Face-View :baseImg="baseImg" />
           </div>
         </div>
         <div class="mc-right">
@@ -68,7 +68,10 @@ export default {
     return {
       isLoad: ref(true),
       baseImg,
-      timerForShow: ref("")
+      timerForProd: ref(""),
+      timerForFace: ref(""),
+      timerForShow: ref(""),
+      count: 0
     };
   },
   mounted() {
@@ -78,26 +81,37 @@ export default {
     }, 2000);
   },
   unmounted() {
-    clearInterval(this.timerForShow);
+    clearInterval(this.timerForProd);
+    clearInterval(this.timerForFace);
   },
   methods: {
     //初始化数据
     init() {
-      //获取登机信息的数据
+      //获取作业计划信息的数据
+      api.queryProdData();
+       api.queryFaceData();
       this.timerForShow = setInterval(() => {
-        api.queryFaceData();
-        api.queryProdData();
-        // this.$refs.faceView.init();
-        // this.$refs.prodView.init();
-        this.$refs.faceChart.init();
-        this.$refs.prodChart.init();
-        this.$refs.faceTable.init();
-        this.$refs.prodTable.init();
+          this.initProd();
+          if(this.count===300){
+            this.initFace();
+            this.count=0;
+          }
+          this.count++
       }, 1000)
     },
     toManager() {
       this.$router.replace("/");
     },
+    initProd() {
+      api.queryProdData();
+      this.$refs.prodChart.init();
+      this.$refs.prodTable.init();
+    },
+    initFace() {
+      api.queryFaceData();
+      this.$refs.faceChart.init();
+      this.$refs.faceTable.init();
+    }
   },
 };
 </script>
