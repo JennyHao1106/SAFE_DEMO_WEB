@@ -1,22 +1,22 @@
 <template>
   <div class="top-left-cmp">
     <div class="dc-left-top">
-      <div class="dc-text">
+      <!-- <div class="dc-text">
         登记信息总览
         <dv-decoration-3 style="width: 200px; height: 20px" />
       </div>
       <div class="main-value">
         <span>{{ getTableTotal }}</span>人次
         <div class="compare-value">统计时间{{ nowTime }}</div>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div> -->
         <dv-border-box-8>
           <div class="el-image">
-            <!-- <img :src="imgSrc" alt srcset class="el-image__inner" style="object-fit: fill;" /> -->
+            <img src="http://api.safe.demo:3000/model.png" alt srcset class="el-image__inner" style="object-fit: fill;" />
           </div>
         </dv-border-box-8>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -82,7 +82,7 @@ export default {
   flex-direction: column;
 
   .dc-left-top {
-    height: 50%;
+    // height: 80%;
     box-sizing: border-box;
   }
   .dv-decoration-2 {
@@ -146,7 +146,7 @@ export default {
     }
   }
   .dv-border-box-8 .border-box-content {
-    height: calc(32vh);
+    height: calc(38vh);
     .el-image {
       margin: 10px;
       border-radius: 5px;

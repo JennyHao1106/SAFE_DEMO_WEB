@@ -89,7 +89,7 @@ export default {
     init() {
       //获取作业计划信息的数据
       api.queryProdData();
-       api.queryFaceData();
+      api.queryFaceData();
       this.timerForShow = setInterval(() => {
           this.initProd();
           if(this.count===300){

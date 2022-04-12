@@ -8,6 +8,7 @@ import baseFun from './baseFunction'
  * @returns {array} 
  */
 function getProdDataForShowList() {
+    
     let showList = [];
     showList = store.state.prodData.list.map(item => {
         let newItem = [];
@@ -25,6 +26,7 @@ function getProdDataForShowList() {
  * @returns  {array}
  */
 function getFaceDataForShowList() {
+   
     let showList = [];
     showList = store.state.faceData.list.map(item => {
         let newItem = [];
@@ -97,8 +99,7 @@ function getFaceDataForShowChart() {
     let countData = [];//用于前端展示y轴数据
     /**统计属于今天的数据 并根据小时分类  -1表示不为今天的数据*/
     showTodayList = store.state.faceData.list.map(currentData => {
-
-        let eventTime = baseFun.dateFormat("YYYY-mm-dd HH:MM:SS",currentData.eventTime);
+        let eventTime =new Date(baseFun.dateFormat("YYYY-mm-dd HH:MM:SS",currentData.eventTime)).getTime() ;
         if (eventTime > todayBegin && eventTime < todayEnd) {
             let nowHour = new Date(parseInt(eventTime)).getHours();
             return nowHour;
